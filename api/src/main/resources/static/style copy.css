@@ -1,0 +1,208 @@
+/* ===== RESET ===== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f1f5f9;
+  display: flex;
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar {
+
+  width: 220px;
+  height: 100vh;
+
+  background: #111827;
+  color: white;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  padding-top: 20px;
+
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+
+  display: block;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+
+}
+
+.sidebar a:hover {
+  background: #1f2937;
+}
+
+/* ===== MAIN ===== */
+
+.main {
+
+  margin-left: 220px;
+  width: 100%;
+
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar {
+
+  background: #1f2937;
+  color: white;
+
+  padding: 15px;
+  font-size: 18px;
+
+}
+
+/* ===== CONTENT ===== */
+
+.wrapper {
+
+  padding: 20px;
+
+}
+
+/* ===== CARD ===== */
+
+.card {
+
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+
+}
+
+/* ===== TITLE ===== */
+
+.title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* ===== BUTTON ===== */
+
+.btn {
+
+  background: #2563eb;
+  color: white;
+  border: none;
+
+  padding: 6px 12px;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-edit {
+  background: orange;
+}
+
+.btn-delete {
+  background: red;
+}
+
+/* ===== TABLE ===== */
+
+table {
+
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+
+}
+
+th {
+
+  background: #e5e7eb;
+  padding: 8px;
+  text-align: left;
+
+}
+
+td {
+
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+
+}
+
+/* ===== MODAL ===== */
+
+.modal {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.5);
+
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+
+}
+
+.modal-content {
+
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+/* ===== INPUT ===== */
+
+input {
+
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 700px) {
+
+  .sidebar {
+    width: 150px;
+  }
+
+  .main {
+    margin-left: 150px;
+  }
+
+}

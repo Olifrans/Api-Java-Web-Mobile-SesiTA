@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Escolar Admin | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-logo">
+        <i class="fas fa-graduation-cap"></i>
+        <span>SchoolAdmin</span>
+    </div>
+    
+    <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard">
+            <i class="fas fa-chart-line"></i>
+            <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="alunos">
+            <i class="fas fa-users"></i>
+            <span>Alunos</span>
+        </a>
+        <a href="#" class="nav-item" data-page="professores">
+            <i class="fas fa-chalkboard-user"></i>
+            <span>Professores</span>
+        </a>
+        <a href="#" class="nav-item" data-page="turmas">
+            <i class="fas fa-book-open"></i>
+            <span>Turmas</span>
+        </a>
+    </nav>
+    
+    <div class="sidebar-footer">
+        <div class="user-info">
+            <i class="fas fa-user-circle"></i>
+            <span>Admin</span>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="navbar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1 id="pageTitle">Dashboard</h1>
+        <div class="navbar-right">
+            <div class="notification-bell">
+                <i class="far fa-bell"></i>
+                <span class="badge">3</span>
+            </div>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?background=2563eb&color=fff&name=Admin" alt="Admin">
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="wrapper">
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #e0e7ff; color: #4f46e5;">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalAlunos">0</h3>
+                        <p>Total de Alunos</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #dcfce7; color: #16a34a;">
+                        <i class="fas fa-chalkboard-user"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Professores</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #fef3c7; color: #d97706;">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Turmas Ativas</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #ffe4e6; color: #e11d48;">
+                        <i class="fas fa-chart-simple"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>94%</h3>
+                        <p>Taxa de Aprovação</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Matrículas por Mês</h3>
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <canvas id="matriculasChart"></canvas>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Distribuição por Turma</h3>
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <canvas id="turmasChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Recent Students -->
+            <div class="recent-card">
+                <div class="recent-header">
+                    <h3><i class="fas fa-users"></i> Últimos Alunos Cadastrados</h3>
+                    <a href="#" class="view-all" data-page="alunos">Ver todos</a>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-alunos-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Alunos Page -->
+        <div id="alunos-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <div class="title">
+                        <i class="fas fa-user-graduate"></i> Gerenciar Alunos
+                    </div>
+                    <button class="btn btn-primary" onclick="abrirModal()">
+                        <i class="fas fa-plus"></i> Novo Aluno
+                    </button>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar aluno por nome, email ou telefone...">
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="aluno-tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Professores Page (Placeholder) -->
+        <div id="professores-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <div class="title">
+                        <i class="fas fa-chalkboard-user"></i> Professores
+                    </div>
+                    <button class="btn btn-primary" onclick="alert('Funcionalidade em desenvolvimento')">
+                        <i class="fas fa-plus"></i> Novo Professor
+                    </button>
+                </div>
+                <div class="placeholder-content">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <p>Módulo de Professores em desenvolvimento</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Turmas Page (Placeholder) -->
+        <div id="turmas-page" class="page">
+            <div class="card">
+                <div class="card-header">
+                    <div class="title">
+                        <i class="fas fa-book-open"></i> Turmas
+                    </div>
+                    <button class="btn btn-primary" onclick="alert('Funcionalidade em desenvolvimento')">
+                        <i class="fas fa-plus"></i> Nova Turma
+                    </button>
+                </div>
+                <div class="placeholder-content">
+                    <i class="fas fa-book-open"></i>
+                    <p>Módulo de Turmas em desenvolvimento</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Novo Aluno</h2>
+            <button class="modal-close" onclick="fecharModal()">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Nome completo</label>
+                <input type="text" id="nome" placeholder="Digite o nome completo">
+            </div>
+            
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" id="email" placeholder="exemplo@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label>Telefone</label>
+                <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+            <button class="btn btn-primary" onclick="salvar()">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

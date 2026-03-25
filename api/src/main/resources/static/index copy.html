@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sistema Escolar Admin</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <h2>Admin</h2>
+
+    <a href="#">Dashboard</a>
+    <a href="#">Alunos</a>
+    <a href="#">Professores</a>
+    <a href="#">Turmas</a>
+
+</div>
+
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+        Sistema Escolar Admin
+    </div>
+
+
+
+    <!-- CONTENT -->
+
+    <div class="wrapper">
+
+        <div class="card">
+
+            <div class="title">
+                Cadastro de Alunos
+            </div>
+
+
+            <button class="btn" onclick="abrirModal()">
+                Novo Aluno
+            </button>
+
+
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="aluno-tbody">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <h2>Aluno</h2>
+
+        <input id="nome" placeholder="Nome">
+
+        <input id="email" placeholder="Email">
+
+        <input id="telefone" placeholder="Telefone">
+
+
+        <div style="display:flex; gap:10px; margin-top:10px;">
+
+            <button class="btn" onclick="salvar()">
+                Salvar
+            </button>
+
+            <button class="btn btn-delete" onclick="fecharModal()">
+                Cancelar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
